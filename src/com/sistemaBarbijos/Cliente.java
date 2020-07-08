@@ -1,9 +1,10 @@
+package com.sistemaBarbijos;
 
 public class Cliente {
 	private String direccion;
 	private String apellido;
 	private String nombre;
-	
+
 	public Cliente(String direccion, String apellido, String nombre) {
 		this.apellido = apellido;
 		this.direccion = direccion;
