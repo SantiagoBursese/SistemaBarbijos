@@ -11,6 +11,9 @@ public class Cliente {
 		this.nombre = nombre;
 	}
 
+	public Cliente() {
+	}
+
 	public String getDireccion() {
 		return direccion;
 	}

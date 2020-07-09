@@ -6,26 +6,38 @@ public class Pedido {
 	//private Long id;
 	private Date fecha;
 	private Cliente cliente;
+	private Integer cantidadBabijos;
 
-	public Pedido( Date fecha, Cliente cliente) {
-		//this.id = id;
+	public Pedido(Date fecha, Cliente cliente, Integer cantidadBabijos) {
 		this.fecha = fecha;
 		this.cliente = cliente;
+		this.cantidadBabijos = cantidadBabijos;
+	}
+
+	public Pedido() {
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	public Cliente getCliente() {
-		return this.cliente;
+		return cliente;
 	}
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-	public Date getFecha() {
-		return this.fecha;
+	public Integer getCantidadBabijos() {
+		return cantidadBabijos;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setCantidadBabijos(Integer cantidadBabijos) {
+		this.cantidadBabijos = cantidadBabijos;
 	}
 }
