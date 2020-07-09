@@ -2,7 +2,6 @@ package com.sistemaBarbijos;
 
 import com.sistemaBarbijos.Repository.RepositioPedidos;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,46 +11,72 @@ public class Sistema {
         RepositioPedidos.iniciarListas();
     }
 
-    public Pedido obtenerDatosCompra(){
-        Pedido pedido = new Pedido();
-        Cliente cliente = new Cliente();
+    public void obtenerDatosCompra(){
+        Pedido pedido;
+        Cliente cliente;
         Scanner scanner = new Scanner(System.in);
-        String nombre, apellido, direccion, fecha;
+        String nombre, apellido, direccion;
+        String respuesta = "S";
         Integer cantidadBarbijos;
+        
+        while (!respuesta.equals("N") ) {
+            System.out.println("Ingrese nombre del cliente: ");
+            nombre = scanner.nextLine();
 
-        System.out.println("Ingrese su nombre: ");
-        nombre = scanner.nextLine();
+            System.out.println("Ingrese apellido del cliente: ");
+            apellido = scanner.nextLine();
 
-        System.out.println("Ingrese su apellido: ");
-        apellido = scanner.nextLine();
+            System.out.println("Ingrese direccion del cliente: ");
+            direccion = scanner.nextLine();
 
-        System.out.println("Ingrese su direccion: ");
-        direccion = scanner.nextLine();
+            System.out.println("Ingrese cantidad de barbijos: ");
+            cantidadBarbijos = scanner.nextInt();
+            scanner.nextLine();
+            cliente= registrarCliente(nombre, apellido, direccion);
 
-        System.out.println("Ingrese cantidad de barbijos: ");
-        cantidadBarbijos = scanner.nextInt();
+            pedido= registrarPedido(cliente, cantidadBarbijos);
+            
+            cliente.agregarPedido(pedido);
 
-        Date date = new Date();
+            aplicaPromocion(pedido,cliente);
+            
+            System.out.println("Desea agregar otro pedido?");
+            respuesta = scanner.nextLine();
+        }
 
-        cliente.setNombre(nombre);
-        cliente.setApellido(apellido);
-        cliente.setDireccion(direccion);
-
-        pedido.setCliente(cliente);
-        pedido.setCantidadBabijos(cantidadBarbijos);
-        pedido.setFecha(date);
-
-        return pedido;
+        scanner.close();
+        
+        //metodo reportes
+        
     }
 
-    public void registrarPedido(){
-        Pedido pedido = this.obtenerDatosCompra();
+	public Pedido registrarPedido(Cliente cliente, Integer cantidadBarbijos) {
+		Pedido pedido = new Pedido();
+		Date date = new Date();
+		pedido.setCliente(cliente);
+        pedido.setCantidadBabijos(cantidadBarbijos);
+        pedido.setFecha(date);
+        return pedido;
 
-        if(pedido.getCantidadBabijos() > 100){
-            RepositioPedidos.getListaPedidosMayores().add(pedido);
+	}
+
+	public Cliente registrarCliente( String nombre, String apellido, String direccion) {
+		Cliente cliente = new Cliente(); 
+		cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        cliente.setDireccion(direccion);
+        
+        return cliente;
+	}
+	
+	
+
+    public void aplicaPromocion(Pedido pedido, Cliente cliente){
+        if(pedido.getCantidadBabijos() >= 100 && cliente.getDireccion().equals("Buenos Aires")) {
+            RepositioPedidos.agregarPedidoGratis(pedido);
         }
         else{
-            RepositioPedidos.getListaPedidosMenores().add(pedido);
+            RepositioPedidos.agregarPedidoPagos(pedido);
         }
     }
 }
