@@ -18,7 +18,7 @@ public class Sistema {
         String nombre, apellido, direccion;
         String respuesta = "S";
         Integer cantidadBarbijos;
-        
+
         while (!respuesta.equals("N") ) {
             System.out.println("Ingrese nombre del cliente: ");
             nombre = scanner.nextLine();
@@ -35,19 +35,17 @@ public class Sistema {
             cliente= registrarCliente(nombre, apellido, direccion);
 
             pedido= registrarPedido(cliente, cantidadBarbijos);
-            
-            cliente.agregarPedido(pedido);
 
             aplicaPromocion(pedido,cliente);
-            
+
             System.out.println("Desea agregar otro pedido?");
             respuesta = scanner.nextLine();
         }
 
         scanner.close();
-        
+
         //metodo reportes
-        
+
     }
 
 	public Pedido registrarPedido(Cliente cliente, Integer cantidadBarbijos) {
@@ -61,15 +59,15 @@ public class Sistema {
 	}
 
 	public Cliente registrarCliente( String nombre, String apellido, String direccion) {
-		Cliente cliente = new Cliente(); 
+		Cliente cliente = new Cliente();
 		cliente.setNombre(nombre);
         cliente.setApellido(apellido);
         cliente.setDireccion(direccion);
-        
+
         return cliente;
 	}
-	
-	
+
+
 
     public void aplicaPromocion(Pedido pedido, Cliente cliente){
         if(pedido.getCantidadBabijos() >= 100 && cliente.getDireccion().equals("Buenos Aires")) {
