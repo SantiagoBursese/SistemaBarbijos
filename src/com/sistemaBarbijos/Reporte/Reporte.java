@@ -38,7 +38,7 @@ public class Reporte {
                 if(i > 0){
                     bw.write('\n');
                 }
-                bw.write((i + 1) + "- " + simpleDateFormat.format(pedido.getFecha()) + '-' + pedido.getCliente().getNombre() + '-' + pedido.getCliente().getApellido() + '-' + pedido.getCliente().getDireccion() + '-' + pedido.getCantidadBabijos());
+                bw.write((i + 1) + "- " + simpleDateFormat.format(pedido.getFecha()) + '-' + pedido.getCliente().getNombre() + '-' + pedido.getCliente().getApellido() + '-' + pedido.getCliente().getDireccion() + '-' + pedido.getCliente().getLocalidad()+'-'+ pedido.getCliente().getProvincia()+ '-' + pedido.getCantidadBabijos());
             }
 
             bw.close();

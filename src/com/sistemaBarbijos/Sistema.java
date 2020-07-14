@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Sistema {
+	private int minimoPromocion;
 
     public Sistema() {
         RepositioPedidos.iniciarListas();
@@ -79,11 +80,21 @@ public class Sistema {
 
 
     public void aplicaPromocion(Pedido pedido, Cliente cliente){
-        if(pedido.getCantidadBabijos() >= 100 && cliente.getProvincia().equals("Buenos Aires")) {
+        if(pedido.getCantidadBabijos() >= minimoPromocion && cliente.getProvincia().equals("Buenos Aires")) {
             RepositioPedidos.agregarPedidoGratis(pedido);
         }
         else{
             RepositioPedidos.agregarPedidoPagos(pedido);
         }
     }
+
+	public int getMinimoPromocion() {
+		return minimoPromocion;
+	}
+
+	public void setMinimoPromocion(int minimoPromocion) {
+		this.minimoPromocion = minimoPromocion;
+	}
+    
+    
 }
