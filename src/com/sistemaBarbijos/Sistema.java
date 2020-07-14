@@ -15,10 +15,11 @@ public class Sistema {
         Pedido pedido;
         Cliente cliente;
         Scanner scanner = new Scanner(System.in);
-        String nombre, apellido, direccion;
+        String nombre, apellido, direccion, localidad, provincia;
         String respuesta = "S";
         Integer cantidadBarbijos;
-
+        
+        
         while (!respuesta.equals("N") ) {
             System.out.println("Ingrese nombre del cliente: ");
             nombre = scanner.nextLine();
@@ -28,11 +29,17 @@ public class Sistema {
 
             System.out.println("Ingrese direccion del cliente: ");
             direccion = scanner.nextLine();
-
+            
+            System.out.println("Ingrese localidad del cliente: ");
+            localidad = scanner.nextLine();
+            
+            System.out.println("Ingrese provincia del cliente: ");
+            provincia = scanner.nextLine();
+            
             System.out.println("Ingrese cantidad de barbijos: ");
             cantidadBarbijos = scanner.nextInt();
             scanner.nextLine();
-            cliente= registrarCliente(nombre, apellido, direccion);
+            cliente= registrarCliente(nombre, apellido, direccion, localidad, provincia);
 
             pedido= registrarPedido(cliente, cantidadBarbijos);
 
@@ -58,11 +65,13 @@ public class Sistema {
 
 	}
 
-	public Cliente registrarCliente( String nombre, String apellido, String direccion) {
+	public Cliente registrarCliente( String nombre, String apellido, String direccion, String localidad, String provincia) {
 		Cliente cliente = new Cliente();
 		cliente.setNombre(nombre);
         cliente.setApellido(apellido);
         cliente.setDireccion(direccion);
+        cliente.setLocalidad(localidad);
+        cliente.setProvincia(provincia);
 
         return cliente;
 	}
@@ -70,7 +79,7 @@ public class Sistema {
 
 
     public void aplicaPromocion(Pedido pedido, Cliente cliente){
-        if(pedido.getCantidadBabijos() >= 100 && cliente.getDireccion().equals("Buenos Aires")) {
+        if(pedido.getCantidadBabijos() >= 100 && cliente.getProvincia().equals("Buenos Aires")) {
             RepositioPedidos.agregarPedidoGratis(pedido);
         }
         else{
