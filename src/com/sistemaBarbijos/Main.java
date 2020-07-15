@@ -37,8 +37,8 @@ public class Main {
         RepositioPedidos.agregarPedidoPagos(pedido);
 
 
-        reporte.generarReporte();*/
-
+        reporte.generarReporte();
+*/
 
 
 
