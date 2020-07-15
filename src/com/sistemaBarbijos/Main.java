@@ -9,7 +9,7 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-       /* Reporte reporte = new Reporte();
+        /*Reporte reporte = new Reporte();
         Cliente cliente = new Cliente();
         cliente.setDireccion("direccion");
         cliente.setApellido("kope");
