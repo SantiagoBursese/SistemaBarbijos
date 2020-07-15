@@ -6,7 +6,6 @@ public class Cliente {
 	private String direccion;
 	private String apellido;
 	private String nombre;
-	private ArrayList <Pedido> pedidos = new ArrayList<>();
 
 	public Cliente(String direccion, String apellido, String nombre) {
 		this.apellido = apellido;
@@ -41,16 +40,4 @@ public class Cliente {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Pedido> getPedidos() {
-		return pedidos;
-	}
-
-	public void setPedidos(ArrayList<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
-	
-	public void agregarPedido(Pedido pedido) {
-		this.pedidos.add(pedido);
-	}
-	
 }
