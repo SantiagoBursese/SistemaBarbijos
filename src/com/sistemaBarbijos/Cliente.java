@@ -1,20 +1,35 @@
 package com.sistemaBarbijos;
 
-import java.util.ArrayList;
-
 public class Cliente {
 	private String direccion;
 	private String apellido;
 	private String nombre;
+	private String localidad;
+	private String provincia;
 
-	public Cliente(String direccion, String apellido, String nombre) {
-		this.apellido = apellido;
-		this.direccion = direccion;
-		this.nombre = nombre;
+	public String getLocalidad() {
+		return localidad;
 	}
 
-	public Cliente() {
+
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
 	}
+
+
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+
 
 	public String getDireccion() {
 		return direccion;
