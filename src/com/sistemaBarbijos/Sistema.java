@@ -3,7 +3,6 @@ package com.sistemaBarbijos;
 import com.sistemaBarbijos.Reporte.Reporte;
 import com.sistemaBarbijos.Repository.RepositioPedidos;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -11,6 +10,7 @@ public class Sistema {
 	private int minimoPromocion;
 	public Scanner scanner;
 	public Reporte reporte;
+	private int cantidadReportesGenerados = 0;
 
     public Sistema() {
         RepositioPedidos.iniciarListas();
@@ -37,7 +37,9 @@ public class Sistema {
     }
     
     public void generarReportes() {
-    	this.reporte.generarReporte();
+    	this.reporte.generarReporte(cantidadReportesGenerados);
+    	cantidadReportesGenerados++;
+    	System.out.println("Se generaron los reportes correspondientes");
     }
     
     public void setCantMinBarbijosPromo() {
