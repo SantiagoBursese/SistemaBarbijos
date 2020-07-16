@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class Reporte {
 
@@ -20,6 +21,7 @@ public class Reporte {
         if (!envioPago && (RepositioPedidos.getListaPedidosGratis() == null || RepositioPedidos.getListaPedidosGratis().size() == 0)) {
             return;
         }
+        List<Pedido> listaPedidos = envioPago ? RepositioPedidos.getListaPedidosPagos() : RepositioPedidos.getListaPedidosGratis();
         String path = envioPago ? "reportes-envios-pagos/" : "reportes-envios-gratis/";
         String ruta = path + nombreArchivo + ".txt";
         String pattern = "MM-dd-yyyy";
@@ -33,8 +35,8 @@ public class Reporte {
         try {
             bw = new BufferedWriter(new FileWriter(archivo));
 
-            for (int i = 0; i < RepositioPedidos.getListaPedidosGratis().size(); i++) {
-                Pedido pedido = RepositioPedidos.getListaPedidosGratis().get(0);
+            for (int i = 0; i < listaPedidos.size(); i++) {
+                Pedido pedido = listaPedidos.get(0);
                 if (i > 0) {
                     bw.write('\n');
                 }

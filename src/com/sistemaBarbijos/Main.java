@@ -1,10 +1,7 @@
 package com.sistemaBarbijos;
 
-import com.sistemaBarbijos.Reporte.Reporte;
-import com.sistemaBarbijos.Repository.RepositioPedidos;
-
 import java.io.IOException;
-import java.util.Date;
+import java.nio.file.Files;
 
 public class Main {
 
