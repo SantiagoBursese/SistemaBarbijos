@@ -21,7 +21,7 @@ public class Sistema {
 
     public void ejecutarMenu() {
     	int opSeleccionada=0;
-    	System.out.println("Ingrese un número del menú: \n 1-Agregar pedido. \n 2-Generar reporte. \n 3-Cambiar cant. mín. de barbijos en la promo("+this.getMinimoPromocion() +").");
+    	System.out.println("Ingrese un número del menú: \n 1-Agregar pedido. \n 2-Generar reporte. \n 3-Cambiar cant. mín. de barbijos en la promo("+this.getMinimoPromocion() +"). \n 4-Salir.");
     	opSeleccionada = this.scanner.nextInt();
     	this.scanner.nextLine();
 	    ejecutarOpcionSeleccionada(opSeleccionada);
@@ -33,6 +33,7 @@ public class Sistema {
 	    if( opSeleccionada == 1) this.obtenerDatosCompra();
 	    if( opSeleccionada == 2) this.generarReportes();
 	    if( opSeleccionada == 3) this.setCantMinBarbijosPromo();
+	    if( opSeleccionada == 4 ) System.out.println("Fin de la ejecución!"); System.exit(0);
 
     }
 
