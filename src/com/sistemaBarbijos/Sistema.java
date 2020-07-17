@@ -33,7 +33,10 @@ public class Sistema {
 	    if( opSeleccionada == 1) this.obtenerDatosCompra();
 	    if( opSeleccionada == 2) this.generarReportes();
 	    if( opSeleccionada == 3) this.setCantMinBarbijosPromo();
-	    if( opSeleccionada == 4 ) System.out.println("Fin de la ejecución!"); System.exit(0);
+	    if( opSeleccionada == 4 ) {
+	    	System.out.println("Fin de la ejecución!"); 
+	    	System.exit(0);
+	    }
 
     }
 
@@ -57,7 +60,7 @@ public class Sistema {
         Integer cantidadBarbijos;
 
 
-        while (!respuesta.equalsIgnoreCase("n") ) {
+        while (!respuesta.equals("N") ) {
             System.out.println("Ingrese nombre del cliente: ");
             nombre = this.scanner.nextLine();
 
