@@ -18,8 +18,8 @@ public class Sistema {
     	this.reporte = new Reporte();
     	this.scanner = new Scanner(System.in);
     }
-    
-    public void ejecutarMenu() {    	
+
+    public void ejecutarMenu() {
     	int opSeleccionada=0;
     	System.out.println("Ingrese un número del menú: \n 1-Agregar pedido. \n 2-Generar reporte. \n 3-Cambiar cant. mín. de barbijos en la promo("+this.getMinimoPromocion() +").");
     	opSeleccionada = this.scanner.nextInt();
@@ -28,35 +28,35 @@ public class Sistema {
 
 	    //this.scanner.close();
     }
-    
+
     public void ejecutarOpcionSeleccionada(int opSeleccionada) {
 	    if( opSeleccionada == 1) this.obtenerDatosCompra();
 	    if( opSeleccionada == 2) this.generarReportes();
 	    if( opSeleccionada == 3) this.setCantMinBarbijosPromo();
 
     }
-    
+
     public void generarReportes() {
     	this.reporte.generarReporte(cantidadReportesGenerados);
     	cantidadReportesGenerados++;
     	System.out.println("Se generaron los reportes correspondientes");
     }
-    
+
     public void setCantMinBarbijosPromo() {
     	System.out.println("Por favor, ingrese la cantidad mínima de barbijos, para la que se aplica la promoción.");
     	this.minimoPromocion = this.scanner.nextInt();
     	this.scanner.nextLine();
     }
-    
+
     public void obtenerDatosCompra(){
         Pedido pedido;
         Cliente cliente;
         String nombre, apellido, direccion, localidad, provincia;
         String respuesta = "S";
         Integer cantidadBarbijos;
-        
-        
-        while (!respuesta.equals("N") ) {
+
+
+        while (!respuesta.equalsIgnoreCase("n") ) {
             System.out.println("Ingrese nombre del cliente: ");
             nombre = this.scanner.nextLine();
 
@@ -65,20 +65,20 @@ public class Sistema {
 
             System.out.println("Ingrese direccion del cliente: ");
             direccion = this.scanner.nextLine();
-            
+
             System.out.println("Ingrese localidad del cliente: ");
             localidad = this.scanner.nextLine();
-            
+
             System.out.println("Ingrese provincia del cliente: ");
             provincia = this.scanner.nextLine();
-            
+
             System.out.println("Ingrese cantidad de barbijos: ");
             cantidadBarbijos = this.scanner.nextInt();
             this.scanner.nextLine();
             cliente= registrarCliente(nombre, apellido, direccion, localidad, provincia);
 
             pedido= registrarPedido(cliente, cantidadBarbijos);
-            
+
             if( aplicaPromocion(pedido,cliente) ) {
             	RepositioPedidos.agregarPedidoGratis(pedido);
             }
@@ -119,7 +119,7 @@ public class Sistema {
         }
             return aplica;
     }
-   
+
 	public int getMinimoPromocion() {
 		return minimoPromocion;
 	}
@@ -127,6 +127,6 @@ public class Sistema {
 	public void setMinimoPromocion(int minimoPromocion) {
 		this.minimoPromocion = minimoPromocion;
 	}
-    
-    
+
+
 }
